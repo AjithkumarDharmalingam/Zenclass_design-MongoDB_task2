@@ -1,0 +1,8 @@
+Find the number of problems solved by the user in codekata
+
+db.users.aggregate({$project:{_id:0,username:1,no_of_prob_solved:{$size:"codekata_solved"}}})
+{ username:"user1",no_of_prob_solved:3 }
+{ username:"user2",no_of_prob_solved:2 }
+{ username:"user3",no_of_prob_solved:2 }
+{ username:"user4",no_of_prob_solved:5 }
+{ username:"user5",no_of_prob_solved:2 }

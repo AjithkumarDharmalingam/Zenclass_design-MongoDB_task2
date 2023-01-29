@@ -1,0 +1,51 @@
+Find the number of users who are absent and task is not submitted  between 15 oct-2020 and 31-oct-2020
+
+db.attendance.aggregate({$match:{date:{$gte:"2020-10-15",$lt:"2020-10-31"}}},{$project:{_id:0,date:1,no_of_absent:{$size:"$absent"}}})
+{
+  date: '2020-10-15',
+  no_of_absent: 1
+}
+{
+  date: '2020-10-16',
+  no_of_absent: 1
+}
+{
+  date: '2020-10-17',
+  no_of_absent: 1
+}
+{
+  date: '2020-10-18',
+  no_of_absent: 1
+}
+{
+  date: '2020-10-19',
+  no_of_absent: 3
+}
+
+
+db.tasks.aggregate({$match:{date:{$gte:"2020-10-15",$lt:"2020-10-31"}}},{$project:{_id:0,task_name:1,date:1,no_of_not_submitted:{$size:"$notsubmitted"}}})
+{
+  task_name: 'MongoDB',
+  date: '2020-10-17',
+  no_of_not_submitted: 2
+}
+{
+  task_name: 'CSS',
+  date: '2020-10-18',
+  no_of_not_submitted: 2
+}
+{
+  task_name: 'MySQL',
+  date: '2020-10-19',
+  no_of_not_submitted: 2
+}
+{
+  task_name: 'API',
+  date: '2020-10-20',
+  no_of_not_submitted: 2
+}
+{
+  task_name: 'React',
+  date: '2020-10-21',
+  no_of_not_submitted: 2
+}
